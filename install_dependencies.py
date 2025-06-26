@@ -7,14 +7,14 @@ def pip_install(package):
 
 print("Instalando dependencias...")
 
-# Instalar dependencias de yolov5 en YOLO/yolov5/requirements.txt si existe
+# Instalar dependencias de yolov5 en yolov5/requirements.txt si existe
 if os.path.exists("requirements.txt"):
-    print("📦 Instalando desde requirements.txt...")
+    print("Instalando desde requirements.txt...")
     pip_install("-r requirements.txt")
 
-# Lista de paquetes manuales
+# Lista de paquetes
 packages = [
-    "torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu",
+    "torch",
     "opencv-python",
     "scikit-learn",
     "tqdm",
@@ -27,9 +27,5 @@ packages = [
 ]
 
 for pkg in packages:
-    print(f"📦 Instalando {pkg}...")
+    print(f"Instalando {pkg}...")
     pip_install(pkg)
-
-# Comprobar disponibilidad de GPU
-import torch
-print(f"✅ PyTorch instalado correctamente. GPU disponible: {torch.cuda.is_available()}")
