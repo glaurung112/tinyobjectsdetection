@@ -24,10 +24,6 @@ packages = [
     "requests",
     "pillow",
     "seaborn",
-    "tensorboard",
-    "thop",
-    "comet_ml",
-    "wandb"
 ]
 
 for pkg in packages:
