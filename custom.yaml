@@ -1,0 +1,5 @@
+train: /tinyobjectsdetection/dataset/images/train
+val: /tinyobjectsdetection/dataset/images/val
+
+nc: 1
+names: ["dot"]
