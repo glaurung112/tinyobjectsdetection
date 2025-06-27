@@ -139,13 +139,13 @@ python3 yolov5/train.py --img 640 --batch 16 --epochs 2 --data custom.yaml --wei
 ### Opción 1: Evaluación por particiones personalizadas
 
 ```bash
-python3 detect_partition.py --weights yolov5/runs/train/small_dots_yolo/weights/best.pt --source dataset1/images/val --img 640 --conf 0.25
+python3 detect_partition.py --weights yolov5/runs/train/small_dots_yolo/weights/best.pt --source dataset/val --img 640 --conf 0.25
 ```
 
 ### Opción 2: Evaluación directa con el script de YOLOv5
 
 ```bash
-python3 yolov5/detect.py --weights yolov5/runs/train/small_dots_yolo/weights/best.pt --source dataset1/images/val --img 640 --conf 0.25
+python3 yolov5/detect.py --weights yolov5/runs/train/small_dots_yolo/weights/best.pt --source dataset/val --img 640 --conf 0.25
 ```
 
 ---
