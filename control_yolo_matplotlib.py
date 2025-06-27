@@ -5,6 +5,9 @@ import numpy as np
 import cv2
 import random
 
+print("Desplegando muestras de los datos con sus labels...")
+print()
+
 DATASET_DIR = 'dataset/cropped_output'
 CLASS_NAMES = ['dot']
 LABEL_COLORS = [(1, 0, 0)]

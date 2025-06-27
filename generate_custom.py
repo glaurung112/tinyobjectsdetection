@@ -1,6 +1,9 @@
 import os
 import yaml
 
+print("Generando el archivo con las rutas de train/ y val/...")
+print()
+
 project_dir = os.path.abspath(os.path.dirname(__file__))
 
 train_path = os.path.join(project_dir, 'dataset/train')

@@ -7,6 +7,9 @@ import time
 
 import argparse
 
+print("Generando recortes aleatorios...")
+print()
+
 image_ext = ['.png', '.jpg', '.bmp']
 ONE_CHANNEL = False
 CROP_SIZE = 299

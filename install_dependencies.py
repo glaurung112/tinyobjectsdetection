@@ -6,6 +6,7 @@ def pip_install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 print("Instalando dependencias...")
+print()
 
 # Instalar dependencias de yolov5 en yolov5/requirements.txt si existe
 if os.path.exists("requirements.txt"):

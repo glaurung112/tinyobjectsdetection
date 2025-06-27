@@ -2,6 +2,9 @@ import os
 import random
 import shutil
 
+print("Diviendo el dataset en train/ y val/...")
+print()
+
 SOURCE_DIR = 'dataset/cropped_output'
 TARGET_DIR = 'dataset'
 SPLIT_RATIO = 0.8  # 80% entrenamiento, 20% validación

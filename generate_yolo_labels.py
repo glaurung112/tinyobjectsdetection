@@ -13,6 +13,9 @@ SAVE_DEBUG = False
 images_found = 0
 images_with_labels = 0
 
+print("Generando labels en formato YOLO...")
+print()
+
 for filename in os.listdir(IMAGE_DIR):
     if filename.lower().endswith((".png", ".jpg", ".jpeg")):
         images_found += 1

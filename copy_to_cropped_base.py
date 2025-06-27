@@ -7,6 +7,9 @@ src_labels = 'dataset/labels'
 dst_base = 'dataset/cropped_base'
 os.makedirs(dst_base, exist_ok=True)
 
+print("Copiando las imágenes y los labels a una misma carpeta...")
+print()
+
 # Copiar imágenes
 for fname in os.listdir(src_images):
     if fname.lower().endswith(('.png', '.jpg', '.jpeg')):
@@ -17,4 +20,4 @@ for fname in os.listdir(src_labels):
     if fname.lower().endswith('.txt'):
         shutil.copy2(os.path.join(src_labels, fname), os.path.join(dst_base, fname))
 
-print("Copia completa en dataset/cropped_base/")
+print("Copia completada en dataset/cropped_base/")

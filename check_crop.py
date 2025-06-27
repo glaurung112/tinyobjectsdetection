@@ -1,5 +1,8 @@
 import os
 
+print("Verificando que todas las imágenes tengan sus labels...")
+print()
+
 src = 'dataset/cropped_base'
 imgs = [f for f in os.listdir(src) if f.endswith('.png') or f.endswith('.jpg')]
 txts = [f for f in os.listdir(src) if f.endswith('.txt')]
