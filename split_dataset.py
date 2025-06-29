@@ -1,13 +1,18 @@
 import os
 import random
 import shutil
+import argparse
 
-print("Diviendo el dataset en train/ y val/...")
+print("Dividiendo el dataset en train/ y val/...")
 print()
+
+parser = argparse.ArgumentParser(description="Divide un dataset en entrenamiento y validación.")
+parser.add_argument('--ratio', type=float, default=0.8, help='Proporción de imágenes para entrenamiento (por defecto 0.8)')
+args = parser.parse_args()
 
 SOURCE_DIR = 'dataset/cropped_output'
 TARGET_DIR = 'dataset'
-SPLIT_RATIO = 0.8  # 80% entrenamiento, 20% validación
+SPLIT_RATIO = args.ratio
 
 for split in ['train', 'val']:
     os.makedirs(os.path.join(TARGET_DIR, split), exist_ok=True)
@@ -18,7 +23,6 @@ images = [f for f in all_files if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
 # Mezclar random
 random.shuffle(images)
 
-# Dividir en train y val
 split_idx = int(len(images) * SPLIT_RATIO)
 train_imgs = images[:split_idx]
 val_imgs = images[split_idx:]
@@ -38,11 +42,11 @@ def move_files(img_list, split):
         if os.path.exists(src_lbl):
             shutil.copy(src_lbl, dst_lbl)
         else:
-            print(f"No se encontró label para: {img_file}")
+            print(f"Advertencia: No se encontró label para {img_file}")
 
 move_files(train_imgs, 'train')
 move_files(val_imgs, 'val')
 
-print(f"Dataset dividido correctamente:")
-print(f"   - {len(train_imgs)} imágenes en 'dataset/train'")
-print(f"   - {len(val_imgs)} imágenes en 'dataset/val'")
+print(f"\nDataset dividido correctamente:")
+print(f"   - {len(train_imgs)} imágenes en '{TARGET_DIR}/train'")
+print(f"   - {len(val_imgs)} imágenes en '{TARGET_DIR}/val'")
