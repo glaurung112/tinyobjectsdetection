@@ -203,7 +203,7 @@ def main():
         for crop_img in crop_img_list:
             tag = "_crop_" + str(i)
             i += 1
-            cv2.imwrite(os.path.join(save_dir, img_path.split('/')[-1].split(".")[0] + tag + ".jpg"), crop_img)
+            cv2.imwrite(os.path.join(save_dir, img_path.split('/')[-1].split(".")[0] + tag + ".png"), crop_img)
 
     end = time.time()
     print("Tiempo total: ", end-start)
