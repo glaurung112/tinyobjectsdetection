@@ -50,6 +50,16 @@ git clone https://github.com/aash1999/yolov5-cbam.git
 python3 install_dependencies.py
 ```
 
+> Si va a utilizar GPU y necesita instalar `torch` con CUDA, **no use `pip install torch`**. Vaya a:
+
+[https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
+
+> Y sigua las instrucciones, por ejemplo:
+
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
+
 ---
 
 ## Preparación del dataset
