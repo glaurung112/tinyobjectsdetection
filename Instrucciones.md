@@ -28,7 +28,7 @@ venv\Scripts\activate
 (venv) user@maquina:~/ruta/proyecto$
 ```
 
-> Esto permite que todas las instalaciones y ejecuciones se realicen **dentro del entorno virtual** y no afecten el resto del sistema.
+> Esto permite que todas las instalaciones y ejecuciones se realicen dentro del entorno virtual y no afecten el resto del sistema.
 
 ---
 
@@ -176,7 +176,7 @@ python3 yolov5-cbam/train.py --img 320 --batch 16 --epochs 150 --data custom.yam
 
 > Esto puede tardar varias horas (o incluso días) dependiendo de la conexión y el entorno.
 
-> Dependiendo de su capacidad computucional, puede ajustar los parámetros `--img`, `--batch`, `--epochs`, considerando lo siguiente:
+> Dependiendo de su capacidad computacional, puede ajustar los parámetros `--img`, `--batch`, `--epochs`, considerando lo siguiente:
 
 #### `--img X`: dimensiones de las imágenes.
 
@@ -202,9 +202,9 @@ python3 yolov5-cbam/train.py --img 320 --batch 16 --epochs 150 --data custom.yam
 * Más epochs permiten mejor ajuste, pero pueden causar **overfitting** si el dataset es pequeño.
 * Valores comunes: `50`–`300` (valores grandes pueden aumentar mucho el tiempo de entrenamiento).
 
-> Aquí se recomienda uilizar:
+> Aquí se recomienda utilizar:
 
-* `--img 480`: porque se está utilizando **input partitioning** y esto la evita pérdida de información fina.
+* `--img 480`: porque se está utilizando **input partitioning** y esto evita pérdida de información fina.
 * `--batch 16`: está bien para una GPU de gama media.
 * `--epochs 150`: es un buen punto de partida (se puede ajustar si se ve que el modelo aún no converge).
 
