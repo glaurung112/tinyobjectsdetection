@@ -11,8 +11,7 @@ print("Generando recortes aleatorios...")
 print()
 
 image_ext = ['.png', '.jpg', '.bmp']
-ONE_CHANNEL = False
-CROP_SIZE = 299
+CROP_SIZE = 224
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--source', type=str, required=True, help='Carpeta que contiene imágenes y etiquetas YOLO')
@@ -207,7 +206,7 @@ def main():
             cv2.imwrite(os.path.join(save_dir, img_path.split('/')[-1].split(".")[0] + tag + ".jpg"), crop_img)
 
     end = time.time()
-    print("Total time: ", end-start)
+    print("Tiempo total: ", end-start)
 
 
 if __name__ == '__main__':
