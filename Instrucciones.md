@@ -54,7 +54,27 @@ python3 install_dependencies.py
 
 ## Preparación del dataset
 
-### 5. Generar labels en formato YOLO
+### 5. Obtener el dataset desde KaggleHub
+
+```bash
+python3 generate_dataset.py
+```
+
+> Esto debe generar una nueva carpeta `dataset/` con las imágenes de la base de datos a utilizar.
+
+> Por defecto se utilizará el dataset de KaggleHub: `daenys2000/small-object-dataset` con imágenes de puntos blancos en un fondo negro, se descargarán 200 imágenes y se permite un mínimo de un 1 punto por imagen y un máximo de 60 puntos por imagen.
+
+> Si desea ajustar estos parámetros puede utilizar, por ejemplo:
+
+```bash
+python3 generate_dataset.py --source <dataset_de_KaggleHub> --max_img 100 --min_points 5 --max_points 40
+```
+
+> Esto utilizará otro dataset de KaggleHub (<dataset_de_KaggleHub>), descargará 100 imágenes y permitirá un mínimo de 5 puntos por imagen y un máximo de 40 puntos por imagen.
+
+---
+
+### 6. Generar labels en formato YOLO
 
 ```bash
 python3 generate_yolo_labels.py
@@ -64,7 +84,7 @@ python3 generate_yolo_labels.py
 
 ---
 
-### 6. Copiar imágenes y labels a una misma carpeta
+### 7. Copiar imágenes y labels a una misma carpeta
 
 ```bash
 python3 copy_to_cropped_base.py
@@ -74,7 +94,7 @@ python3 copy_to_cropped_base.py
 
 ---
 
-### 7. Verificar que todas las imágenes tengan su respectivo label
+### 8. Verificar que todas las imágenes tengan su respectivo label
 
 ```bash
 python3 check_crop.py
@@ -82,7 +102,7 @@ python3 check_crop.py
 
 ---
 
-### 8. Generar recortes aleatorios con sus respectivos labels
+### 9. Generar recortes aleatorios con sus respectivos labels
 
 > Esto genera recortes aleatorios sobre los datos para **aumentar la diversidad del conjunto de datos**, lo cual mejora la detección de objetos pequeños.
 
@@ -95,7 +115,7 @@ python3 crop_bulk.py --source dataset/cropped_base --output dataset/cropped_outp
 
 ---
 
-### 9. Visualizar muestras de los datos con sus labels
+### 10. Visualizar muestras de los datos con sus labels
 
 ```bash
 python3 control_yolo_matplotlib.py
@@ -112,7 +132,7 @@ python3 control_yolo_matplotlib.py
 
 ---
 
-### 10. Dividir el dataset en entrenamiento y validación
+### 11. Dividir el dataset en entrenamiento y validación
 
 ```bash
 python3 split_dataset.py
@@ -156,7 +176,7 @@ dataset/
 
 ---
 
-### 11. Generar automáticamente el archivo `custom.yaml` con rutas absolutas
+### 12. Generar automáticamente el archivo `custom.yaml` con rutas absolutas
 
 ```bash
 python3 generate_custom.py
@@ -168,7 +188,7 @@ python3 generate_custom.py
 
 ## Entrenamiento
 
-### 12. Entrenar utilizando el modelo mejorado
+### 13. Entrenar utilizando el modelo mejorado
 
 ```bash
 python3 yolov5-cbam/train.py --img 320 --batch 16 --epochs 150 --data custom.yaml --cfg yolov5-cbam/models/yolo5m-cbam-involution.yaml --weights yolov5s.pt --name small_dots_yolo
@@ -243,6 +263,7 @@ python3 detect_partition.py --weights yolov5-cbam/runs/train/small_dots_yolo/wei
 
 * Se debe usar `Python ≥ 3.8` para mejor compatibilidad.
 * El entorno virtual `venv` es opcional pero se recomienda mucho su uso.
+* Es preferible utilizar archivos `.png` para mejor compatibilidad.
 * Todos los scripts deben ejecutarse desde la raíz del repositorio.
 
 ---
