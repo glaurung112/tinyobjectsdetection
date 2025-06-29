@@ -9,9 +9,9 @@ print("Instalando dependencias...")
 print()
 
 # Instalar dependencias de yolov5 en yolov5/requirements.txt si existe
-if os.path.exists("requirements.txt"):
+if os.path.exists("yolov5-cbam/requirements.txt"):
     print("Instalando desde requirements.txt...")
-    pip_install("-r requirements.txt")
+    pip_install("-r yolov5-cbam/requirements.txt")
 
 # Lista de paquetes
 packages = [
