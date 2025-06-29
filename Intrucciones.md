@@ -21,7 +21,7 @@ source venv/bin/activate
 ### 3. Clonar YOLOv5 (repositorio base)
 
 ```bash
-git clone https://github.com/ultralytics/yolov5.git
+git clone https://github.com/aash1999/yolov5-cbam.git
 ```
 
 ---
@@ -129,7 +129,7 @@ python3 generate_custom.py
 ### 12. Entrenar el modelo
 
 ```bash
-python3 yolov5/train.py --img 640 --batch 16 --epochs 2 --data custom.yaml --weights yolov5s.pt --name small_dots_yolo
+python3 yolov5-cbam/train.py --img 480 --batch 16 --epochs 100 --data custom.yaml --weights yolov5s.pt --name small_dots_yolo
 ```
 
 ---
@@ -139,14 +139,16 @@ python3 yolov5/train.py --img 640 --batch 16 --epochs 2 --data custom.yaml --wei
 ### Opción 1: Evaluación por particiones personalizadas
 
 ```bash
-python3 detect_partition.py --weights yolov5/runs/train/small_dots_yolo/weights/best.pt --source dataset/val --img 640 --conf 0.25
+python3 detect_partition.py --weights yolov5-cbam/runs/train/small_dots_yolo/weights/best.pt --source dataset/val --img 480 --conf 0.25
 ```
 
 ### Opción 2: Evaluación directa con el script de YOLOv5
 
 ```bash
-python3 yolov5/detect.py --weights yolov5/runs/train/small_dots_yolo/weights/best.pt --source dataset/val --img 640 --conf 0.25
+python3 yolov5-cbam/detect.py --weights yolov5-cbam/runs/train/small_dots_yolo/weights/best.pt --source dataset/val --img 480 --conf 0.25
 ```
+
+> En ambos casos debe revisar la carpeta a utilizar (si ha realizado varios entrenamientos): `small_dots_yolo`, `small_dots_yolo1`, `small_dots_yolo2`, ...
 
 ---
 
