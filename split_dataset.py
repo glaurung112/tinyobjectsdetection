@@ -47,6 +47,6 @@ def move_files(img_list, split):
 move_files(train_imgs, 'train')
 move_files(val_imgs, 'val')
 
-print(f"\nDataset dividido correctamente:")
+print(f"Dataset dividido correctamente:")
 print(f"   - {len(train_imgs)} imágenes en '{TARGET_DIR}/train'")
 print(f"   - {len(val_imgs)} imágenes en '{TARGET_DIR}/val'")
