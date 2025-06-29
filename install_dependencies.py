@@ -25,6 +25,7 @@ packages = [
     "requests",
     "pillow",
     "seaborn",
+    "kagglehub",
 ]
 
 for pkg in packages:
