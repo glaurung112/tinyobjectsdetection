@@ -132,6 +132,8 @@ python3 generate_custom.py
 python3 yolov5-cbam/train.py --img 480 --batch 16 --epochs 100 --data custom.yaml --weights yolov5s.pt --name small_dots_yolo
 ```
 
+> Esto puede tardar varias horas dependiendo de la conexión y el entorno.
+
 ---
 
 ## Evaluación del modelo
