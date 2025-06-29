@@ -25,7 +25,7 @@ venv\Scripts\activate
 > Una vez activado el entorno, el prompt de la terminal se verá de esta forma:
 
 ```bash
-(venv) user@maquina:~/ruta/proyecto$
+(venv) user@maquina:~/ruta/proyecto/.../tinyobjectsdetection$
 ```
 
 > Esto permite que todas las instalaciones y ejecuciones se realicen dentro del entorno virtual y no afecten el resto del sistema.
