@@ -1,6 +1,6 @@
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), 'yolov5'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'yolov5-cbam'))
 
 from utils.torch_utils import select_device, smart_inference_mode
 from utils.plots import Annotator, colors, save_one_box
