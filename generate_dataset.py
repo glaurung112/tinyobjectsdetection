@@ -32,7 +32,7 @@ def main():
         exit(1)
 
     paths = [os.path.join(base_dataset, 'train'), os.path.join(base_dataset, 'test')]
-    output_dir = 'dataset'
+    output_dir = 'dataset/images'
 
     os.makedirs(output_dir, exist_ok=True)
     count = 0
