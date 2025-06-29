@@ -49,7 +49,6 @@ def show_image_with_boxes(img_path, label_path):
     plt.axis('off')
     plt.show()
 
-# === MAIN LOOP ===
 all_files = sorted(os.listdir(DATASET_DIR))
 image_files = [f for f in all_files if f.endswith(('.png', '.jpg', '.jpeg'))]
 index = 0
@@ -61,7 +60,7 @@ while True:
 
     show_image_with_boxes(img_path, label_path)
 
-    print(f"\n[Imagen {index+1}/{len(image_files)}] → {image_files[index]}")
+    print(f"\n[Imagen {index+1}/{len(image_files)}]: {image_files[index]}")
     key = input("[n]ext, [b]ack, [r]andom, [q]uit: ").lower()
 
     if key == 'n':
