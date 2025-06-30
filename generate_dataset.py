@@ -6,7 +6,7 @@ import kagglehub
 import argparse
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Filtra imágenes por cantidad de puntos blancos desde un dataset de KaggleHub.")
+    parser = argparse.ArgumentParser(description="Filtra imágenes desde un dataset de KaggleHub.")
     parser.add_argument('--source', type=str, default="daenys2000/small-object-dataset", help='Nombre del dataset de KaggleHub')
     parser.add_argument('--max_img', type=int, default=200, help='Máximo de imágenes a guardar')
     parser.add_argument('--min_points', type=int, default=1, help='Cantidad mínima de puntos por imagen')

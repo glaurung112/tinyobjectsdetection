@@ -6,8 +6,8 @@ import argparse
 print("Dividiendo el dataset en train/ y val/...")
 print()
 
-parser = argparse.ArgumentParser(description="Divide un dataset en entrenamiento y validación.")
-parser.add_argument('--ratio', type=float, default=0.8, help='Proporción de imágenes para entrenamiento (por defecto 0.8)')
+parser = argparse.ArgumentParser(description="Divide el dataset en entrenamiento y validación.")
+parser.add_argument('--ratio', type=float, default=0.8, help='Proporción de imágenes para entrenamiento')
 args = parser.parse_args()
 
 SOURCE_DIR = 'dataset/cropped_output'
