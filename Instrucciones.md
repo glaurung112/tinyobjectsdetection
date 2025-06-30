@@ -54,7 +54,7 @@ python3 install_dependencies.py
 
 [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
 
-> Y sigua las instrucciones, por ejemplo:
+> Y siga las instrucciones, por ejemplo:
 
 ```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
@@ -72,7 +72,7 @@ python3 generate_dataset.py
 
 > Esto debe generar una nueva carpeta `dataset/` con las imágenes de la base de datos a utilizar.
 
-> Por defecto se utilizará el dataset de KaggleHub: `daenys2000/small-object-dataset` con imágenes de puntos blancos en un fondo negro, se descargarán 200 imágenes y se permite un mínimo de un 1 punto por imagen y un máximo de 60 puntos por imagen.
+> Por defecto se utiliza el dataset de KaggleHub: `daenys2000/small-object-dataset` con imágenes de puntos blancos en un fondo negro, se descargará un máximo de 200 imágenes y se permite un mínimo de un 1 punto y un máximo de 60 puntos por imagen.
 
 > Si desea ajustar estos parámetros puede utilizar, por ejemplo:
 
@@ -80,7 +80,7 @@ python3 generate_dataset.py
 python3 generate_dataset.py --source <dataset_de_KaggleHub> --max_img 100 --min_points 5 --max_points 40
 ```
 
-> Esto utilizará otro dataset de KaggleHub (<dataset_de_KaggleHub>), descargará 100 imágenes y permitirá un mínimo de 5 puntos por imagen y un máximo de 40 puntos por imagen.
+> Esto utilizará otro dataset de KaggleHub (<dataset_de_KaggleHub>), descargará un máximo de 100 imágenes y permitirá un mínimo de 5 puntos y un máximo de 40 puntos por imagen.
 
 ---
 
@@ -204,7 +204,7 @@ python3 generate_custom.py
 python3 yolov5-cbam/train.py --img 320 --batch 16 --epochs 150 --data custom.yaml --cfg yolov5-cbam/models/yolo5m-cbam-involution.yaml --weights yolov5s.pt --name small_dots_yolo
 ```
 
-> Esto puede tardar varias horas (o incluso días) dependiendo de la conexión y el entorno.
+> Esto puede tardar varias horas (o incluso días) dependiendo de la capacidad computacional y el entorno.
 
 > Dependiendo de su capacidad computacional, puede ajustar los parámetros `--img`, `--batch`, `--epochs`, considerando lo siguiente:
 
@@ -213,7 +213,7 @@ python3 yolov5-cbam/train.py --img 320 --batch 16 --epochs 150 --data custom.yam
 * Las imágenes se redimensionarán a **X×X píxeles** antes de entrar al modelo.
 * Imágenes más grandes pueden capturar más detalle, pero consumen más memoria y tiempo.
 * Valores comunes: `320`, `480`, `640`, `1280`.
-* Usar `480` o incluso más pequeño puede ser mejor para objetos pequeños.
+* Usar `320` puede ser mejor para objetos pequeños.
 
 ---
 
@@ -245,23 +245,28 @@ python3 yolov5-cbam/train.py --img 320 --batch 16 --epochs 150 --data custom.yam
 ### Opción 1: Evaluación directa con el script de YOLOv5
 
 ```bash
-python3 yolov5-cbam/detect.py --weights yolov5-cbam/runs/train/small_dots_yolo/weights/best.pt --source dataset/val --img 320 --conf 0.1
+python3 yolov5-cbam/detect.py --weights yolov5-cbam/runs/train/small_dots_yolo/weights/best.pt --source dataset/val --img 320 --conf-thres 0.1
 ```
 
-### Opción 2: Evaluación por particiones personalizadas
+### Opción 2: Evaluación personalizada
 
 ```bash
-python3 detect_partition.py --weights yolov5-cbam/runs/train/small_dots_yolo/weights/best.pt --source dataset/val --img 320 --conf 0.1
+python3 detect_metrics.py --weights yolov5-cbam/runs/train/small_dots_yolo/weights/best.pt --source dataset/val --img 320 --conf-thres 0.1
 ```
 
-> Esta es una versión modificada de `detect.py` que implementa **particionado durante la inferencia** con el objetivo de **aumentar la resolución espacial de los objetos pequeños** en las muestras de prueba, lo cual es útil para la detección de objetos pequeños.
+> En este caso, se deben generar dos carpetas:
 
-> El parámetro `--conf` establece el **umbral de confianza mínima** que debe tener una predicción para ser considerada válida y mostrarse en la salida.
+* `detecciones`: que contiene las imágenes con las detecciones realizadas por el modelo.
+* `resultados`: que contiene las métricas obtenidas y la distribución de *False Negatives* y *True Positives*.
+
+> Esta es una versión modificada de `detect.py` para ver las métricas obtenidas (Precision, Recall, F1 Score).
+
+> En ambos casos, el parámetro `--conf` establece el **umbral de confianza mínima** que debe tener una predicción para ser considerada válida y mostrarse en la salida.
 
 #### `--conf X`: Solo mostrar detecciones con una probabilidad mayor o igual a **X**.
 
 * Valores bajos (`--conf 0.1`): detectas más objetos, pero con más falsos positivos.
-* Valores altos (`--conf 0.7`): detectas solo los objetos más seguros, pero se pueden perder objetos pequeños o tenues.
+* Valores altos (`--conf 0.7`): detectas solo los objetos más seguros, pero se pueden perder objetos pequeños.
 
 > Aquí se recomienda usar `--conf 0.1` o incluso `--conf 0.05` ya que los puntos pequeños suelen tener **menos confianza** y se podrían perder muchos si el umbral es alto.
 
