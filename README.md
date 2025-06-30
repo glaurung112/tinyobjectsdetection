@@ -38,7 +38,6 @@ This project includes a collection of scripts for managing the dataset, preparin
   Downloads a dataset from Kaggle. You can specify the Kaggle dataset path, the maximum number of images to include, and constraints on the number of points per image (minimum and maximum).
 
 * **`generate_yolo_labels.py`**
-  *Modified rom [Small-Object-Detection-with-YOLO](https://github.com/hamzagorgulu/Small-Object-Detection-with-YOLO).*
   Generates YOLO-format labels from annotation files.
 
 * **`copy_to_cropped_base.py`**
@@ -63,7 +62,7 @@ This project includes a collection of scripts for managing the dataset, preparin
 
 * **`detect_metrics.py`**
   *Modified rom [Small-Object-Detection-with-YOLO](https://github.com/hamzagorgulu/Small-Object-Detection-with-YOLO).*
-  Runs object detection on the test set and returns performance metrics such as Precision, Recall, and F1-Score. Also generates visualizations of false negatives and true positives.
+  Runs object detection on the test set and returns performance metrics such as Precision, Recall, and F1-Score.
 
 ---
 
@@ -298,6 +297,7 @@ python3 detect_metrics.py --weights yolov5-cbam/runs/train/small_dots_yolo/weigh
 * Python >= 3.8 is recommended.
 * Using a virtual environment (`venv`) is highly encouraged.
 * All scripts must be run from the root directory.
+* These setup instructions are intended for Linux-based systems.
 * The folder `dataset_respaldo/` is unused and kept as an example.
 
 ---
