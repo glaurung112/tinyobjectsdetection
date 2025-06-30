@@ -295,5 +295,7 @@ python3 detect_metrics.py --weights yolov5-cbam/runs/train/small_dots_yolo/weigh
 * All scripts must be run from the root directory.
 * These setup instructions are intended for Linux-based systems.
 * The folder `dataset_respaldo/` is unused and kept as an example.
+* This project is part of the course *IE0499 – Proyecto Eléctrico* at the University of Costa Rica. 
+* For more information, please refer to the report attached in this repository.
 
 ---
