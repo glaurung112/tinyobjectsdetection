@@ -200,10 +200,14 @@ def main():
                 new_txt.write('\n')
             new_txt.close()
         i = 0
+        ext = os.path.splitext(img_path)[1]
+        base_name = os.path.splitext(os.path.basename(img_path))[0]
+
         for crop_img in crop_img_list:
-            tag = "_crop_" + str(i)
+            tag = f"_crop_{i}"
             i += 1
-            cv2.imwrite(os.path.join(save_dir, img_path.split('/')[-1].split(".")[0] + tag + ".png"), crop_img)
+            output_path = os.path.join(save_dir, base_name + tag + ext)
+            cv2.imwrite(output_path, crop_img)
 
     end = time.time()
     print("Tiempo total: ", end-start)
