@@ -280,5 +280,6 @@ python3 detect_metrics.py --weights yolov5-cbam/runs/train/small_dots_yolo/weigh
 * El entorno virtual `venv` es opcional pero se recomienda mucho su uso.
 * Es preferible utilizar archivos `.png` para mejor compatibilidad.
 * Todos los scripts deben ejecutarse desde la raíz del repositorio.
+* El dataset llamado `dataset_respaldo` no se utiliza, pero se agrega como ejemplo.
 
 ---
