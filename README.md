@@ -47,11 +47,11 @@ This project includes a collection of scripts for managing the dataset, preparin
   Verifies that every image has a corresponding YOLO label file.
 
 * **`crop_bulk.py`**
-  *Modified rom [Small-Object-Detection-with-YOLO](https://github.com/hamzagorgulu/Small-Object-Detection-with-YOLO).*
+  *Modified from [Small-Object-Detection-with-YOLO](https://github.com/hamzagorgulu/Small-Object-Detection-with-YOLO).*
   Crops images into smaller patches to increase dataset diversity and enhance the model’s ability to detect small objects.
 
 * **`control_yolo_matplotlib.py`**
-  *Modified rom [Small-Object-Detection-with-YOLO](https://github.com/hamzagorgulu/Small-Object-Detection-with-YOLO).*
+  *Modified from [Small-Object-Detection-with-YOLO](https://github.com/hamzagorgulu/Small-Object-Detection-with-YOLO).*
   Visualizes random samples from the dataset with their corresponding bounding boxes, using Matplotlib.
 
 * **`split_dataset.py`**
@@ -61,7 +61,7 @@ This project includes a collection of scripts for managing the dataset, preparin
   Generates a custom dataset configuration file (`.yaml`) pointing to the `train/` and `val/` directories, as required by YOLOv5.
 
 * **`detect_metrics.py`**
-  *Modified rom [Small-Object-Detection-with-YOLO](https://github.com/hamzagorgulu/Small-Object-Detection-with-YOLO).*
+  *Modified from [Small-Object-Detection-with-YOLO](https://github.com/hamzagorgulu/Small-Object-Detection-with-YOLO).*
   Runs object detection on the test set and returns performance metrics such as Precision, Recall, and F1-Score.
 
 ---
@@ -84,12 +84,6 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-On Windows:
-
-```bash
-venv\Scripts\activate
-```
-
 > Once activated, your terminal should show something like:
 
 ```bash
@@ -106,7 +100,7 @@ venv\Scripts\activate
 git clone https://github.com/aash1999/yolov5-cbam.git
 ```
 
-> This version includes architectural improvements specifically aimed at better small object detection.
+> This version includes architectural improvements for better small object detection.
 
 ---
 
@@ -138,12 +132,12 @@ python3 generate_dataset.py
 ```
 
 > This creates a `dataset/` folder containing images.
-> By default, it uses `daenys2000/small-object-dataset` with up to 200 black-background images containing white dots.
+> By default, it uses `daenys2000/small-object-dataset` with up to 200 black-background images containing white dots (between 1 and 60).
 
 To customize:
 
 ```bash
-python3 generate_dataset.py --source <kagglehub_dataset> --max_img 100 --min_points 5 --max_points 40
+python3 generate_dataset.py --source <kagglehub_dataset> --max_img <max_images> --min_points <min_points> --max_points <max_points>
 ```
 
 ---
@@ -209,7 +203,7 @@ python3 control_yolo_matplotlib.py
 python3 split_dataset.py
 ```
 
-> Default: 80% training, 20% validation. Use `--ratio` to change this:
+> Default: 80% training, 20% validation. Use `--ratio` to change this. For example:
 
 ```bash
 python3 split_dataset.py --ratio 0.7
@@ -249,7 +243,7 @@ dataset/
 python3 generate_custom.py
 ```
 
-> This file is used by YOLOv5 to locate the training/validation sets.
+> This file is used by YOLOv5 to locate the training and validation sets.
 
 ---
 
@@ -286,16 +280,18 @@ python3 detect_metrics.py --weights yolov5-cbam/runs/train/small_dots_yolo/weigh
 > This script creates two folders:
 
 * `detections/`: images with predicted boxes
-* `results/`: contains metrics like precision, recall, and F1, plus FN/TP distribution plots.
+* `results/`: contains metrics like precision, recall, and F1.
 
-> Tip: use `--conf 0.05` or `--conf 0.1` to catch low-confidence small detections.
+> Use `--conf 0.05` or `--conf 0.1` to catch low-confidence small detections.
+
+> If you have made many runs, check the path. It could be `small_dots_yolo`, `small_dots_yolo1`, `small_dots_yolo2`, and so on.
 
 ---
 
 ## Additional Notes
 
 * Python >= 3.8 is recommended.
-* Using a virtual environment (`venv`) is highly encouraged.
+* Using a virtual environment (`venv`) is highly encouraged, but not necessary.
 * All scripts must be run from the root directory.
 * These setup instructions are intended for Linux-based systems.
 * The folder `dataset_respaldo/` is unused and kept as an example.
