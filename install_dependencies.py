@@ -29,6 +29,7 @@ packages = [
     "setuptools",
     "ultralytics",
     "psutil",
+    "tensorboard",
 ]
 
 for pkg in packages:
